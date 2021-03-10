@@ -93,7 +93,7 @@ async function reposToDivs(username) {
   ) {
     const skillsDivs = skills.map((skill) => `<li>${skill}</li>`).join("\n");
     return `
-      <div id="showcase-project-${idNum}" data-aos-delay="0" data-aos-anchor-placement="top-center" data-aos="${flipSide.get()}" class="showcase-project center-text">
+      <div id="showcase-project-${idNum}" data-aos-delay="0" data-aos="${flipSide.get()}" class="showcase-project center-text">
         <img src=${screenshotURL} />
         <h3>${title}</h3>
         <p>${description}</h3>
