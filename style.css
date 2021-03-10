@@ -77,7 +77,7 @@ h3 {
   min-height: 100vh;
 }
 .scroll-disable {
-  overflow: hidden;
+  overflow-y: hidden;
 }
 .hidden {
   display: none;
@@ -238,12 +238,6 @@ textarea {
 html,
 body {
   height: 100%;
-}
-
-/* WORKAROUND to ensure our fancy circle doesn't cause horizontal scrolling */
-body {
-  max-width: 100%;
-  overflow-x: hidden;
 }
 
 /* PSUEDO-ELEMENTS FOR ANIMATION */

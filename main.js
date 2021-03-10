@@ -70,19 +70,6 @@ async function reposToDivs(username) {
   let output = "";
   let idNum = 0;
 
-  const flipSide = {
-    num: 0,
-    get: function () {
-      if (!this.num) {
-        this.num = 1;
-        return "fade-right";
-      } else {
-        this.num = 0;
-        return "fade-left";
-      }
-    },
-  };
-
   function divMaker(
     screenshotURL,
     title,
@@ -93,7 +80,7 @@ async function reposToDivs(username) {
   ) {
     const skillsDivs = skills.map((skill) => `<li>${skill}</li>`).join("\n");
     return `
-      <div id="showcase-project-${idNum}" data-aos-delay="0" data-aos="${flipSide.get()}" class="showcase-project center-text">
+      <div id="showcase-project-${idNum}" data-aos-delay="0" data-aos="fade-right" class="showcase-project center-text">
         <img src=${screenshotURL} />
         <h3>${title}</h3>
         <p>${description}</h3>
