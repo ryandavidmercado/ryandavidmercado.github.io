@@ -1,0 +1,395 @@
+/* BOX-SIZING RESET */
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/* SMOOTH SCROLL */
+html {
+  scroll-behavior: smooth;
+}
+
+/* VARIABLES */
+:root {
+  --startup-anim-time: 0.7s;
+  --startup-anim-delay: 0.3s;
+}
+
+/* FONTS */
+a,
+p,
+span,
+li,
+footer,
+input,
+textarea {
+  font-family: "Roboto", sans-serif;
+}
+
+h1,
+h2,
+h3,
+.contact-form {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+/* ANIMATIONS */
+@keyframes circle-grow {
+  to {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes background-fade {
+  to {
+    background-color: orange;
+  }
+}
+
+@keyframes slide-up {
+  to {
+    top: -100%;
+    display: none;
+  }
+}
+
+@keyframes slide-down {
+  to {
+    bottom: -100%;
+    visibility: hidden;
+  }
+}
+
+/* UTILITY CLASSES */
+.screen-height {
+  min-height: 100vh;
+}
+.scroll-disable {
+  overflow: hidden;
+}
+.hidden {
+  display: none;
+}
+.center-text {
+  text-align: center;
+}
+.circle-photo {
+  clip-path: circle(50% at center);
+  margin-bottom: 10%;
+  width: min(100%, 350px);
+  height: auto;
+}
+.styled-skew {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  transform: skewX(-10deg);
+  width: 100%;
+}
+.showcase-project {
+  display: flex;
+  background-color: orange;
+  box-shadow: 5px 5px;
+  padding: 10px;
+  flex-direction: column;
+  margin-bottom: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.6);
+}
+.showcase-project img {
+  width: 100%;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+}
+.showcase-project > * {
+  position: relative;
+  margin: 0;
+  padding: 23px;
+  border-bottom: 1px solid black;
+}
+
+.showcase-project > img {
+  padding: 0;
+}
+
+.showcase-project > *:last-child,
+.showcase-project > *:first-child {
+  border-bottom: 0;
+}
+
+.showcase-link {
+  color: black;
+}
+.showcase-link-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0 0 0;
+  padding: 10px;
+}
+.showcase-skills-container {
+  display: flex;
+  justify-content: center;
+}
+.showcase-skills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  list-style: none;
+}
+
+.showcase-skills li {
+  margin-bottom: 5px;
+}
+.showcase-skills li:last-child {
+  margin-bottom: 0;
+}
+
+.contact-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: 5px 5px;
+  border: 2px solid rgba(0, 0, 0, 0.6);
+}
+
+.contact-form div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-form label {
+  margin: 10px 0;
+  margin-bottom: 0;
+  width: 100%;
+  border: 2px solid rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+label h3 {
+  margin: 10px;
+  font-size: 1.15rem;
+}
+
+.contact-form input,
+textarea {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.15);
+  border: none;
+  margin-bottom: 15px;
+  /* border-color: rgba(0, 0, 0, 0); */
+}
+
+.contact-form input {
+  padding: 15px;
+  height: 40px;
+}
+
+.contact-form textarea {
+  height: 100px;
+  padding: 15px;
+}
+
+.contact-form button {
+  align-self: center;
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  transform: skewX(-10deg);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.15);
+}
+
+.contact-form div:last-of-type {
+  flex-direction: column;
+}
+
+.icons-container {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.icons-container a {
+  color: inherit;
+  text-decoration: inherit;
+  margin-right: 10px;
+}
+
+.icons-container i:last-child {
+  margin-right: 0px;
+  padding-top: 5px;
+}
+
+/* WORKAROUND for broken vh measurement on mobile */
+html,
+body {
+  height: 100%;
+}
+
+/* WORKAROUND to ensure our fancy circle doesn't cause horizontal scrolling */
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* PSUEDO-ELEMENTS FOR ANIMATION */
+header::before {
+  animation: slide-up 0.7s
+    calc(var(--startup-anim-time) + var(--startup-anim-delay)) forwards;
+  content: "";
+  width: 100vw;
+  height: calc((100% - 105vw) / 2);
+  background-color: black;
+  position: absolute;
+  top: 0;
+}
+header::after {
+  animation: slide-down 0.7s
+    calc(var(--startup-anim-time) + var(--startup-anim-delay)) forwards;
+  content: "";
+  width: 100vw;
+  height: calc((100% - 105vw) / 2);
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+}
+
+/* HEADER */
+header {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+#header-container {
+  padding: 0;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#header-title {
+  font-size: max(min(10vw, 65px), 30px);
+  transform: translateX(4vw);
+  margin-bottom: 2vh;
+}
+
+#circle {
+  position: absolute;
+  z-index: -1;
+  background-color: black;
+  top: 50%;
+  left: 50%;
+  width: 100vmin;
+  height: 100vmin;
+  transform: translate(-50%, -50%) scale(0);
+  animation: circle-grow var(--startup-anim-time) var(--startup-anim-delay)
+    forwards;
+  border-radius: 50%;
+}
+
+/* NAVBAR */
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  width: 87%;
+  flex-direction: column;
+  transform: skewX(-10deg);
+}
+
+.nav-container-explicit {
+  align-self: center;
+  width: auto;
+  border-radius: 10px;
+  padding: 10px;
+  align-items: center;
+  transform: none;
+}
+
+.nav-button {
+  color: inherit;
+  text-align: center;
+  font-size: min(4.5vw, 25px);
+  text-decoration: none;
+  margin-bottom: 12px;
+  border: 2px solid white;
+  padding: 6px 10px;
+}
+
+.nav-button-explicit {
+  border-color: white;
+  color: white;
+  background-color: black;
+}
+
+nav a:last-child {
+  margin-bottom: 0;
+}
+
+body {
+  animation: background-fade 0.5s
+    calc(var(--startup-anim-delay) + var(--startup-anim-time)) forwards;
+}
+
+/* SPACING */
+
+/* We slightly color alternate sections to differentiate them. */
+section:nth-child(2n-1) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+section {
+  padding: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+/* We remove outer margins on paragraphs to let flex handle this. */
+p {
+  margin-top: 0;
+  margin-bottom: 23px;
+}
+p:last-of-type {
+  margin-bottom: 0;
+}
+
+h2 {
+  margin-bottom: 25px;
+  margin-top: 0;
+}
+
+/* FOOTER */
+footer {
+  color: black;
+  margin-bottom: 0;
+  padding: 15px;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Show the page after parsing all other CSS. FOUC prevention. */
+html {
+  visibility: visible !important;
+}
