@@ -148,8 +148,8 @@ async function reposToDivs(username) {
 
 async function populateShowcase(username) {
   const content = await reposToDivs(username);
-  AOS.refreshHard();
   document.querySelector("#showcase-container").innerHTML = content;
+  AOS.refreshHard();
 }
 
 populateShowcase("ryandavidmercado");
