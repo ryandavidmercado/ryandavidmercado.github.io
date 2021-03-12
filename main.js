@@ -121,7 +121,7 @@ async function reposToDivs(username) {
       ? previewAttempt2[1]
       : previewAttempt3
       ? previewAttempt3[1]
-      : "";
+      : "#";
     const screenshotURL = getPreviewImageURL(previewURL);
     const description = readme.match(/\n(.*)/)[1];
     const title = repos[i].repo;
