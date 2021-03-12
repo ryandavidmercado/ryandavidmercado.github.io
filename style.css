@@ -240,13 +240,17 @@ body {
   height: 100%;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 /* PSUEDO-ELEMENTS FOR ANIMATION */
 header::before {
   animation: slide-up 0.7s
     calc(var(--startup-anim-time) + var(--startup-anim-delay)) forwards;
   content: "";
   width: 100vw;
-  height: calc((100% - 105vw) / 2);
+  height: calc((100% - 100vmin) / 2);
   background-color: black;
   position: absolute;
   top: 0;
@@ -256,7 +260,7 @@ header::after {
     calc(var(--startup-anim-time) + var(--startup-anim-delay)) forwards;
   content: "";
   width: 100vw;
-  height: calc((100% - 105vw) / 2);
+  height: calc((100% - 100vmin) / 2);
   background-color: black;
   position: absolute;
   bottom: 0;
@@ -353,6 +357,7 @@ section:nth-child(2n-1) {
   background-color: rgba(0, 0, 0, 0.1);
 }
 section {
+  width: 100vw;
   padding: 10%;
   display: flex;
   flex-direction: column;
@@ -360,7 +365,10 @@ section {
   align-items: center;
   z-index: 1;
 }
-
+#intro-img {
+  display: flex;
+  justify-content: center;
+}
 /* We remove outer margins on paragraphs to let flex handle this. */
 p {
   margin-top: 0;
@@ -381,6 +389,67 @@ footer {
   margin-bottom: 0;
   padding: 15px;
   box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* MEDIA QUERIES */
+@media all and (min-width: 800px) {
+  #circle {
+    width: 75vh;
+    height: 75vh;
+  }
+  section {
+    padding: 50px 20%;
+    min-height: 50vh !important;
+  }
+  #showcase {
+    padding: 50px 10%;
+    min-height: 100vh !important;
+  }
+  header::before,
+  header::after {
+    height: calc((100% - (75vh)) / 2);
+  }
+  #intro {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    min-height: 50vh;
+  }
+  #intro img {
+    flex: 33%;
+    max-width: 400px;
+  }
+  #intro-img {
+    padding: 0;
+    width: auto;
+  }
+  #intro div {
+    flex: 67%;
+  }
+  #profile-pic {
+    margin-bottom: 0;
+  }
+  #about {
+    padding: 50px 25%;
+  }
+  #showcase-container {
+    display: flex;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .showcase-project {
+    flex: 1;
+    height: auto;
+    min-width: 300px;
+  }
+  #contact {
+    min-height: 75vh;
+  }
+  .contact-form textarea {
+    height: 200px;
+  }
 }
 
 /* Show the page after parsing all other CSS. FOUC prevention. */
