@@ -288,7 +288,7 @@ header {
 
 #header-title {
   font-size: max(min(10vw, 65px), 30px);
-  transform: translateX(4vw);
+  transform: translateX(25px);
   margin-bottom: 2vh;
 }
 
