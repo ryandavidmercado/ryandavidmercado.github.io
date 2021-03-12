@@ -1,8 +1,9 @@
 const htmlElem = document.querySelector("html");
 const bodyElem = document.querySelector("body");
+const isMobile = window.innerWidth < 800;
 
 // Disables scrolling while intro animation plays on mobile
-if (window.innerWidth <= 800) {
+if (isMobile) {
   bodyElem.classList.add("scroll-disable");
   setTimeout(() => {
     bodyElem.classList.remove("scroll-disable");
@@ -79,8 +80,9 @@ async function reposToDivs(username) {
     githubLink
   ) {
     const skillsDivs = skills.map((skill) => `<li>${skill}</li>`).join("\n");
+    const aosBlock = isMobile ? "fade-right" : "fade-up";
     return `
-      <div id="showcase-project-${idNum}" data-aos-delay="0" data-aos="fade-right" class="showcase-project center-text">
+      <div id="showcase-project-${idNum}" data-aos="${aosBlock}" class="showcase-project center-text">
         <img src=${screenshotURL} />
         <h3>${title}</h3>
         <p>${description}</h3>
