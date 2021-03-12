@@ -32,19 +32,27 @@ AOS.init();
 /* Functionality for automatically generating project previews
 and updating them to the DOM. */
 
-function getPinnedRepos(username) {
+async function getPinnedRepos(username) {
   const url = `https://gh-pinned-repos-5l2i19um3.vercel.app/?username=${username}`;
-  return fetch(url)
-    .then((res) => res.json())
-    .catch(console.log);
+  try {
+    const res = await fetch(url);
+    return await res.json();
+  } catch (err) {
+    console.log(err);
+    return [];
+  }
 }
 
-function getRepoREADME(projectURL) {
+async function getRepoREADME(projectURL) {
   const slicedProjectURL = projectURL.slice(19);
   const readmeURL = `https://raw.githubusercontent.com/${slicedProjectURL}/main/README.md`;
-  return fetch(readmeURL)
-    .then((res) => res.text())
-    .catch(console.log);
+  try {
+    const res = await fetch(readmeURL);
+    return await res.text();
+  } catch (err) {
+    console.log(err);
+    return "";
+  }
 }
 
 async function getRepoSkills(projectURL) {
