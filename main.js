@@ -100,8 +100,8 @@ async function reposToDivs(username) {
           </ul>
         </div>
         <nav class="showcase-link-container">
-          <a class="showcase-link" href="${previewURL}">Live Demo</a>
-          <a class="showcase-link" href="${githubLink}">GitHub</a>
+          <a class="showcase-link" href="${previewURL}" target="_blank">Live Demo</a>
+          <a class="showcase-link" href="${githubLink}" target="_blank">GitHub</a>
         </nav>
       </div>
     `;
