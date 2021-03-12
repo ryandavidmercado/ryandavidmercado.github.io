@@ -112,7 +112,16 @@ async function reposToDivs(username) {
     const readme = await getRepoREADME(githubLink);
     const skills = await getRepoSkills(githubLink);
 
-    const previewURL = readme.match(/\[Live Preview]\(([^)]*)/m)[1];
+    const previewAttempt1 = readme.match(/\[Live Preview]\(([^)]*)/m);
+    const previewAttempt2 = readme.match(/\[Live Demo]\(([^)]*)/m);
+    const previewAttempt3 = readme.match(/\[Live Site]\(([^)]*)/m);
+    const previewURL = previewAttempt1
+      ? previewAttempt1[1]
+      : previewAttempt2
+      ? previewAttempt2[1]
+      : previewAttempt3
+      ? previewAttempt3[1]
+      : "";
     const screenshotURL = getPreviewImageURL(previewURL);
     const description = readme.match(/\n(.*)/)[1];
     const title = repos[i].repo;
