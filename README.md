@@ -1,5 +1,5 @@
 # ryandavidmercado.github.io
-![Preview](https://raw.githubusercontent.com/ryandavidmercado/ryandavidmercado.github.io/main/screenshots/preview.gif)
+<img src="https://raw.githubusercontent.com/ryandavidmercado/ryandavidmercado.github.io/main/screenshots/preview.gif" alt="Preview" width="50%"/>
 
 Personal portfolio. Gathers pinned repositories from my GitHub profile automatically, with some swanky CSS work and personal information to sweeten the deal. Built to display my work to potential employers in a more visually pleasing manner than GitHub natively provides.
 
