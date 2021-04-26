@@ -25,8 +25,9 @@ The site was designed with three main goals in mind:
 * Cross-browser implementation should be a priority during the development phase. Using several features not supported in Safari - particularly flex-gap - has led to a broken presentation on MacOS.
 
 ## Tech Stack
-* HTML5/CSS/JS
-* Animate-on-scroll (AOS) library
+* HTML5/CSS: Base stack
+* JS: Enables dynamic data fetching and QOL scripting for a consistent user experience.
+* Animate-on-scroll (AOS) library: Adds visual dynamism to the page through reveal transitions on major elements.
 
 ## Future Goals
 * Rewrite the site using Gatsby, mainly as a means of solving the issues raised in Lessons Learned. This would have several key benefits:
