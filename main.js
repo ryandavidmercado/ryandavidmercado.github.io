@@ -70,8 +70,23 @@ async function getRepoSkills(projectURL) {
   }
 }
 
-function getPreviewImageURL(previewURL) {
-  return `https://api.apiflash.com/v1/urltoimage?access_key=e0de860625c54387ba3bcf3368cb0038&url=${previewURL}`;
+function getPreviewImageURL(projectURL) {
+  const slicedProjectURL = projectURL.slice(19);
+  return `https://raw.githubusercontent.com/${slicedProjectURL}/main/screenshots/preview.png`;
+}
+
+function getPreviewLink(readme) {
+  const clauses = ["Preview", "Demo", "Site", "API"];
+  let match = "";
+  clauses.forEach((clause) => {
+    const testCase = new RegExp(`\\[Live ${clause}]\\(([^)]*)`, "m");
+    console.log(testCase);
+    if (!match) {
+      match = readme.match(testCase);
+    }
+  });
+  console.log(match);
+  return match[1] || "#";
 }
 
 async function reposToDivs(username) {
@@ -91,7 +106,7 @@ async function reposToDivs(username) {
     const aosBlock = isMobile ? "fade-right" : "fade-up";
     return `
       <div id="showcase-project-${idNum}" data-aos="${aosBlock}" class="showcase-project center-text">
-        <img src=${screenshotURL} />
+        <img src=${screenshotURL} onerror="this.style.display='none'" />
         <h3>${title}</h3>
         <p>${description}</h3>
         <div class="showcase-skills-container">
@@ -107,24 +122,16 @@ async function reposToDivs(username) {
     `;
   }
 
-  for (let i = 0; i < repos.length; i++) {
-    const githubLink = repos[i].link;
-    const readme = await getRepoREADME(githubLink);
-    const skills = await getRepoSkills(githubLink);
+  for (let repo of repos) {
+    const githubLink = repo.link;
 
-    const previewAttempt1 = readme.match(/\[Live Preview]\(([^)]*)/m);
-    const previewAttempt2 = readme.match(/\[Live Demo]\(([^)]*)/m);
-    const previewAttempt3 = readme.match(/\[Live Site]\(([^)]*)/m);
-    const previewURL = previewAttempt1
-      ? previewAttempt1[1]
-      : previewAttempt2
-      ? previewAttempt2[1]
-      : previewAttempt3
-      ? previewAttempt3[1]
-      : "#";
-    const screenshotURL = getPreviewImageURL(previewURL);
-    const description = readme.match(/\n(.*)/)[1];
-    const title = repos[i].repo;
+    const skills = await getRepoSkills(githubLink);
+    const screenshotURL = getPreviewImageURL(githubLink);
+
+    const readme = await getRepoREADME(githubLink);
+    const previewURL = getPreviewLink(readme);
+    const description = repo.description;
+    const title = repo.repo;
 
     output += divMaker(
       screenshotURL,
