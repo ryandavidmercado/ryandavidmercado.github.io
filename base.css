@@ -86,7 +86,7 @@ h3 {
   text-align: center;
 }
 .circle-photo {
-  clip-path: circle(50% at center);
+  border-radius: 50%;
   margin-bottom: 10%;
   width: min(100%, 350px);
   height: auto;
@@ -444,7 +444,7 @@ footer {
   }
   #showcase-container {
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
