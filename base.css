@@ -46,20 +46,9 @@ h3 {
 }
 
 /* ANIMATIONS */
-@-webkit-keyframes circle-grow {
-  to {
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
 @keyframes circle-grow {
   to {
     transform: translate(-50%, -50%) scale(1);
-  }
-}
-
-@-webkit-keyframes background-fade {
-  to {
-    background-color: orange;
   }
 }
 
@@ -69,24 +58,10 @@ h3 {
   }
 }
 
-@-webkit-keyframes slide-up {
-  to {
-    top: -100%;
-    display: none;
-  }
-}
-
 @keyframes slide-up {
   to {
     top: -100%;
     display: none;
-  }
-}
-
-@-webkit-keyframes slide-down {
-  to {
-    bottom: -100%;
-    visibility: hidden;
   }
 }
 
@@ -111,8 +86,7 @@ h3 {
   text-align: center;
 }
 .circle-photo {
-  -webkit-clip-path: circle(50% at center);
-          clip-path: circle(50% at center);
+  clip-path: circle(50% at center);
   margin-bottom: 10%;
   width: min(100%, 350px);
   height: auto;
@@ -273,13 +247,7 @@ body {
 
 /* PSUEDO-ELEMENTS FOR ANIMATION */
 header::before {
-  -webkit-animation: slide-up 0.7s
-    calc(0.7s + 0.3s) forwards;
-  -webkit-animation: slide-up 0.7s
-    calc(var(--startup-anim-time) + var(--startup-anim-delay)) forwards;
-          animation: slide-up 0.7s
-    calc(0.7s + 0.3s) forwards;
-          animation: slide-up 0.7s
+  animation: slide-up 0.7s
     calc(var(--startup-anim-time) + var(--startup-anim-delay)) forwards;
   content: "";
   width: 100vw;
@@ -289,13 +257,7 @@ header::before {
   top: 0;
 }
 header::after {
-  -webkit-animation: slide-down 0.7s
-    calc(0.7s + 0.3s) forwards;
-  -webkit-animation: slide-down 0.7s
-    calc(var(--startup-anim-time) + var(--startup-anim-delay)) forwards;
-          animation: slide-down 0.7s
-    calc(0.7s + 0.3s) forwards;
-          animation: slide-down 0.7s
+  animation: slide-down 0.7s
     calc(var(--startup-anim-time) + var(--startup-anim-delay)) forwards;
   content: "";
   width: 100vw;
@@ -340,13 +302,7 @@ header {
   width: 100vmin;
   height: 100vmin;
   transform: translate(-50%, -50%) scale(0);
-  -webkit-animation: circle-grow 0.7s 0.3s
-    forwards;
-  -webkit-animation: circle-grow var(--startup-anim-time) var(--startup-anim-delay)
-    forwards;
-          animation: circle-grow 0.7s 0.3s
-    forwards;
-          animation: circle-grow var(--startup-anim-time) var(--startup-anim-delay)
+  animation: circle-grow var(--startup-anim-time) var(--startup-anim-delay)
     forwards;
   border-radius: 50%;
 }
@@ -391,13 +347,7 @@ nav a:last-child {
 }
 
 body {
-  -webkit-animation: background-fade 0.5s
-    calc(0.3s + 0.7s) forwards;
-  -webkit-animation: background-fade 0.5s
-    calc(var(--startup-anim-delay) + var(--startup-anim-time)) forwards;
-          animation: background-fade 0.5s
-    calc(0.3s + 0.7s) forwards;
-          animation: background-fade 0.5s
+  animation: background-fade 0.5s
     calc(var(--startup-anim-delay) + var(--startup-anim-time)) forwards;
 }
 
@@ -472,7 +422,6 @@ footer {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    grid-gap: 50px;
     gap: 50px;
     min-height: 50vh;
   }
@@ -498,7 +447,6 @@ footer {
     align-items: start;
     justify-content: center;
     flex-wrap: wrap;
-    grid-gap: 20px;
     gap: 20px;
   }
   .showcase-project {
@@ -517,7 +465,6 @@ footer {
     flex-direction: row;
     width: 100%;
     align-self: center;
-    grid-gap: 10px;
     gap: 10px;
   }
   #name-email-container div {
