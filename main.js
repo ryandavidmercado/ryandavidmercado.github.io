@@ -76,16 +76,14 @@ function getPreviewImageURL(projectURL) {
 }
 
 function getPreviewLink(readme) {
-  const clauses = ["Preview", "Demo", "Site", "API"];
-  let match = "";
+  const clauses = ["Preview", "Demo", "Application", "Site", "API"];
+  let match = [];
   clauses.forEach((clause) => {
     const testCase = new RegExp(`\\[Live ${clause}]\\(([^)]*)`, "m");
-    console.log(testCase);
     if (!match) {
       match = readme.match(testCase);
     }
   });
-  console.log(match);
   return match[1] || "#";
 }
 
