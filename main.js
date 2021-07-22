@@ -76,15 +76,16 @@ function getPreviewImageURL(projectURL) {
 }
 
 function getPreviewLink(readme) {
-  const clauses = ["Preview", "Demo", "Application", "Site", "API"];
-  let match = [];
+  const clauses = ["Preview", "Demo", "App", "Application", "Site", "API"];
+  let match = "";
   clauses.forEach((clause) => {
-    const testCase = new RegExp(`\\[Live ${clause}]\\(([^)]*)`, "m");
     if (!match) {
-      match = readme.match(testCase);
+      const testCase = new RegExp(`\\[Live ${clause}]\\((.*)\\)`);
+      const matchAttempt = readme.match(testCase);
+      if(matchAttempt) match = matchAttempt[1];
     }
   });
-  return match[1] || "#";
+  return matchAttempt || "#";
 }
 
 async function reposToDivs(username) {
