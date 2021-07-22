@@ -85,7 +85,7 @@ function getPreviewLink(readme) {
       if(matchAttempt) match = matchAttempt[1];
     }
   });
-  return matchAttempt || "#";
+  return match || "#";
 }
 
 async function reposToDivs(username) {
